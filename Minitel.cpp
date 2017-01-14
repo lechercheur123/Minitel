@@ -35,10 +35,10 @@ Minitel::Minitel(int rx, int tx) : SoftwareSerial(rx, tx) {
   init();
 }
 
-void Minitel::init() {
+void Minitel::init(short speed) {
   Serial.begin(1200);
   begin(1200);
-  setMaxSpeed(); // Set serial speed to 4800
+  setSpeed(speed); // Set serial speed
   useDefaultColors();
   refreshSettings();
 }
@@ -553,12 +553,29 @@ void Minitel::transparentVideo() {
 }
 
 
-void Minitel::setMaxSpeed() {
+void Minitel::setSpeed(short speed) { // speed must be 300, 1200, 4800, 9600 (for Minitel 2 only)
   serialprint7(27);
   serialprint7(58);
   serialprint7(107);
-  serialprint7(118); // Set minitel serial speed to 4800
-  begin(4800); // Set arduino serial speed to 4800
+  switch (speed) {
+    case  300 : 
+		serialprint7(82);
+		begin( 300);
+		break;
+    case 1200 :
+		serialprint7(100);
+		begin(1200);
+		break;
+    case 4800 :
+		serialprint7(118);
+		begin(4800);
+		break;
+    case 9600 : // For Minitel 2 ONLY !
+		serialprint7(127);
+		begin(9600);
+		break;
+	}
+  
 }
 //
 //

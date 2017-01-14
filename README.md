@@ -38,6 +38,28 @@ void setup() {
 ...
 ```
 
+You can set serial speed in constructor
+
+```
+#include <SoftwareSerial.h>
+#include <Minitel.h>
+Minitel minitel(4800); // for 4800 bauds. See setSpeed method for more informations
+
+void setup() {
+}
+...
+```
+Or with custom PINs
+
+```
+#include <SoftwareSerial.h>
+#include <Minitel.h>
+Minitel minitel(10, 11, 4800); // for 4800 bauds. See setSpeed method for more informations
+
+void setup() {
+}
+...
+```
 ##Graphic and Text modes
 
 Here is how you can switch between text and graphic mode 
@@ -366,6 +388,16 @@ int accent = minitel.getAccentKey(); // In addition to checking if a character a
 ```
 
 
+## Set serial speed
+
+Enable you to change the serial speed
+
+```
+setSpeed(4800);
+```
+
+You can use : 300, 1200, 4800 or 9600 bauds (9600 bauds works only with Minitel 2)
+
 # Undocumented
 
 Here is a list of undocumented functions:
@@ -382,14 +414,6 @@ minitel.noLineMask();
 minitel.standardVideo();
 minitel.invertVideo();
 minitel.transparentVideo();
-```
-
-# Unimplemented function
-
-This function does nothing for the moment
-
-```
-minitel.setMaxSpeed();
 ```
 
 # Advanced

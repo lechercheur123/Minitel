@@ -179,7 +179,7 @@ private :
 	
 	char _nullChar = '~';
 
-	void init();
+	void init(short speed);
 	void mode(byte mode);
 	void cursor(boolean b);
 	void blink(boolean b);
@@ -203,6 +203,8 @@ public :
 
 	Minitel();
 	Minitel(int rx, int tx);
+	Minitel(short speed);
+	Minitel(int rx, int tx, short speed);
 
 	void serialprint7(byte b);
 
@@ -258,7 +260,7 @@ public :
 	void invertVideo();
 	void transparentVideo();
 	
-	void setMaxSpeed();
+	void setSpeed(short speed);
 	
 	void bip(unsigned long duration);
 

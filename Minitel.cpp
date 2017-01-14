@@ -27,7 +27,7 @@ boolean _currentShowCursor = false;
 
 
 Minitel::Minitel() : SoftwareSerial(6, 7) {
-  init(4800);
+  init((short)(4800));
 }
 
 Minitel::Minitel(short speed) : SoftwareSerial(6, 7) {
@@ -35,7 +35,7 @@ Minitel::Minitel(short speed) : SoftwareSerial(6, 7) {
 }
 
 Minitel::Minitel(int rx, int tx) : SoftwareSerial(rx, tx) {
-  init(4800);
+  init((short)(4800));
 }
 
 Minitel::Minitel(int rx, int tx, short speed) : SoftwareSerial(rx, tx) {
